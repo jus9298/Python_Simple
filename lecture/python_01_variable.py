@@ -75,7 +75,7 @@ print(float(int_a))
 # 문자열 정수형("3") -> 정수형(3)
 # 문자열 정수형("3") -> 실수형(3.0)
 # 문자열 실수형("3.14") -> 정수형(Error)
-print(int(str_float_d))
+#print(int(str_float_d)) 이거왜 에러?
 # 문자열 실수형("3.14") -> 실수형(3.14)
 
 # 5. None
@@ -115,15 +115,64 @@ print(num) # 출력: 10
 #            변수에 값을 대입하면 공간이 초기화 되고 값만 저장!
 #
 
+# 7. 명명규칙(Naming RUle)
+# * 변수, 함수, 클래스 등 사용자 정의 이름에 사용
+# * 명확하고 알아보기 쉽게!!!
+#
+# 1. 영문 대소문자, 숫자, 특수문자(_)만 사용
+# 2. 숫자로 시작할 수 없음
+#   abc1(o) 1abc(x)
+# 3. 영어 대소문자 구별
+#  abc ABC Abc ABc abC 모두 다른 변수로 인식
+# 4. 예약어 사용 불가
+#   예약어: Python에서 미리 선점하여 사용중인 키워드
+#   ex) print, for, while, if, else, class,
+#       and, return, import, def, pass ...
+
+# 8. Naming Method
+# - 변수, 함수, 클래스 등의 사용자 정의 이름에 사용하는 기법
+# 프로그래밍 언어별로 사용한는 Naming Method가 다름
+
+# 1. snake_case: 소문자만 사용, 합성어는 _사용
+#   ex) chosun)student_name
+# 2. camelcase: 첫글자 소문자, 합성어 첫글자 대문자
+#   ex) chosunStudentName
+# 3. PascalCase: 첫글자 대문자, 합성어 첫글자 대문자
+#   ex) ChosunStudentName
 
 
+#            변수            함수            클래스
+# Java, C   camelCase      camelCase       PascalCase
+# Python    snake_case     snake_case      PascalCase
 
 
+# 9. 동적 츨력
+print("="*200)
+student_num = 20213029
+student_name = "Yunseo"
+# 출력 예: "조선대학교 20213029, Yunseo 입니다."
+print("조선대학교 20213029, Yunseo 입니다.")  # 하드코딩 지양
 
+# 1. format() - old
+#print("조선대학교 {}, {} 입니다.".format(*args:student_num, student_name))
+print("조선대학교 {}, {} 입니다.".format(student_num, student_name))
+# *args는 자동으로..
 
+# 2. f-string - New
+print(f"조선대학교 {student_num}, {student_name} 입니다.")
 
+# - : 빼기
+# * : 곱하기
+# ** or ^ : 제곱  ex) 3^2
+# / : 나누기
+# % : 나누기(나머지)
+# // : 나누기(몫)
 
-
+# Quiz
+num = 9
+num -1
+num +2
+print(num)
 
 
 
