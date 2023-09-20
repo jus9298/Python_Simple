@@ -1,3 +1,4 @@
+'''
 # 주석: 메모, 실행x
 # 글씨체: D2Coding
 
@@ -245,6 +246,56 @@ print(msg[-4:])
 
 # 다해봐 개발환경구축, 개발도 해보고 1년도안걸려
 # 적성에 안맞는거 지워
+
+
+# 4.
+# 4-2. upper() and lower() : 대소문자 변경
+# - ID = "ChoLong02" -> "ChoLong02".lower()
+# - 데이터 전처리 -> 1A, 1a -> upper() 1A 통일
+print(str.upper())
+print(str.lower())
+
+# 4-3. replace() : 문자열 내의 특정 문자 치환
+print(str.replace("H", "J"))
+
+# 4-4. split() : 구분자를 기준으로 문자열 분할(Default: 공백)
+b = "hello world what a nice weather"
+print(b.split())
+print(b.split("w"))
+
+# 4-5. strip() : 문자열의 좌우 공백 제거
+id = "                  python1004        "
+print(id)
+print(id.strip())
+
+#id = " ChoLong1004    "
+#id.lower()  " cholong1004    "
+print(id.lower().strip()) #"cholong1004"
+
+#4-6. find() and rfine() : 문자열 내부의 특정 문자 위치 인덱스 출력
+print(str.find("o")) # Hell^o^ world
+print(str.rfind("o")) # Hello w^o^rld
+print(str.find("world"))
+# 4-7. in() : 특정 문자열 포함하는지 확인 (True False)
+'''
+# 문제
+id = "cherry1004@gmail.com"
+val = id[id.find("c"):id.find("4")+1]
+#idx = id.find("@")
+#val = id[:idx]
+print(val)
+
+url = "www.naver.com"
+val = url.split(".")
+print(val[1])
+
+
+
+
+
+
+
+
 
 
 
