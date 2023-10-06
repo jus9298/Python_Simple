@@ -22,5 +22,24 @@ print("a의 평균: %.2f" %(sum/len(a)))
 
 # 4. list b에서 최소값 찾기
 b = [22, 1, 4, 7, 98]
-for i in range()
-print(a)
+for i in b:
+    if i < int(min):
+        min = i
+    else:
+        continue
+print(f"최소값: {min}")
+
+# 5. list c에서 최소값, 최대값 찾기
+c = [2, 5, 7, 1, 8]
+min = c[0]
+max = c[0]
+
+for i in c:
+    if i < int(min):
+        min = i
+    elif i > max:
+        max = i
+    else:
+        continue
+
+print(f"최소값: {min}, 최대값:{max}")
