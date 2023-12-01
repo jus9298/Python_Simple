@@ -87,6 +87,46 @@ def review_collector(movie_code):
     review_list = doc.select("ul.list_comment > li")
     print(f"= 전체 리뷰: {len(review_list)}건")
 
+
+    # 다음 영화 리뷰 날짜 표시방법
+    # 1. "조금전"
+    # 2. "?분전"
+    # 3. "?시간전"
+    # 4. "2023. 11. 29. 16:14"
+
+    # 반복 1회마다 리뷰 1건 씩 수집
+        count = 0
+        for item in review_list:
+
+            review_date = item.select("span.txt_date")[0].get_text()
+
+            if review_date == "조금전":
+                review_date = datetime.now() - timedelta(seconds=59)
+                review_date = review_date.strftime("%Y. %m. %d. %H:%M")
+
+            elif review_date[-2:] == "분전":
+                reg_minute = int(re.sub(r"[^~0-9]", "", review_date))
+                review_date = datetime.now() - timedelta(minutes=reg_minute)
+                review_date = review_date.strftime("%Y. %m. %d. %H:%M")
+
+            elif review_date[-3:] == "시간전":
+                reg_hour = int(re.sub(r"[^~0-9]", "", review_date))
+                review_date = datetime.now() - timedelta(hours=reg_hour)
+                review_date = review_date.strftime("%Y. %m. %d. %H:%M")
+
+            collect_date = int(re.sub(r"[^~0-9]", "", review_date))
+            if last_date >= collect_date:
+                continue
+
+
+
+
+
+
+
+
+
+
     # item: 리뷰 1건(평점,리뷰,작성자,작성일자)
     for item in review_list:
         review_score = item.select("div.ratings")[0].get_text()
@@ -100,27 +140,7 @@ def review_collector(movie_code):
         review_writer = item.select("a.link_nick > span")[1].get_text()
         print(f"    -작성자: {review_writer}")
 
-        # 다음 영화 리뷰 날짜 표시방법
-        # 1. "조금전"
-        # 2. "?분전"
-        # 3. "?시간전"
-        # 4. "2023. 11. 29. 16:14"
 
-        review_date = item.select("span.txt_date")[0].get_text()
-
-        if review_date == "조금전":
-            review_date = datetime.now() - timedelta(seconds=59)
-            review_date = review_date.strftime("%Y. %m. %d. %H:%M")
-
-        elif review_date[-2:] == "분전":
-            reg_minute = int(re.sub(r"[^~0-9]", "", review_date))
-            review_date = datetime.now() - timedelta(minutes=reg_minute)
-            review_date = review_date.strftime("%Y. %m. %d. %H:%M")
-
-        elif review_date[-3:] == "시간전":
-            reg_hour = int(re.sub(r"[^~0-9]", "", review_date))
-            review_date = datetime.now() - timedelta(hours=reg_hour)
-            review_date = review_date.strftime("%Y. %m. %d. %H:%M")
 
         # 24시간 이내에 작성 된 리뷰의 날짜 → 24시간전, 3시간전 → 다음영화날짜(2023. 11. 17. 2:12)
         # 1) 24시간전, 17시간전과 같은 날짜 찾기
