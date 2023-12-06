@@ -13,6 +13,7 @@
 
 import pymysql
 
+
 def connection():
     try:
         conn = pymysql.connect(
@@ -28,14 +29,6 @@ def connection():
         return conn
     except pymysql.Error as e:
         print(f"MARIADB 연결 실패 {e}")
-
-# we're on our way now
-# the truth can be so hard to swallow
-# hey now
-# cause you got the love, you got the love, lady
-# I'm worn out
-# cause with every little trick, they try to drag you down
-# you don't know why
 
 # port 확인
 # 서비스
