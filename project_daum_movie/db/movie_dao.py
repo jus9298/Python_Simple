@@ -1,4 +1,6 @@
-from db.common.connection import connection
+
+
+from common.connection import connection
 
 
 # 리뷰 저장
@@ -43,6 +45,23 @@ def get_last_review():
         # - 복수건: fetchall()
         result = curs.fetchone()
         return result
+    except Exception as e:
+        print(e)
+    finally:
+        conn.close()
+
+
+def get_reviews():
+    conn = connection()
+
+    try:
+        curs = conn.cursor() #일꾼..
+        sql = """
+                SELECT * FROM tbl_review 
+              """ # 일..
+        curs.execute(sql) #실행..
+        return curs.fetchall() #전체데이터 가지고옴
+
     except Exception as e:
         print(e)
     finally:
